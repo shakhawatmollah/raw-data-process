@@ -14,7 +14,8 @@ public class DataExportMain implements Runnable {
 		
 		try {
 			long startValidCust = System.currentTimeMillis();
-			CustomerService.exportDataFromDatabase("SELECT * FROM CUSTOMER_VALID;", "valid-customers");
+			String selectQuery = "SELECT * FROM CUSTOMER_VALID;";
+			CustomerService.exportDataFromDatabase(selectQuery, "valid-customers");
 			long finishValidCust = System.currentTimeMillis();
 			long timeElapsedValidCust = finishValidCust - startValidCust;
 			System.out.println("The valid customer export process took "+timeElapsedValidCust/1000+" seconds to execute");
@@ -24,7 +25,8 @@ public class DataExportMain implements Runnable {
 		
 		try {
 			long startInvalidCust = System.currentTimeMillis();
-			CustomerService.exportDataFromDatabase("SELECT * FROM CUSTOMER_INVALID;", "invalid-customers");
+			String selectQuery = "SELECT * FROM CUSTOMER_INVALID;";
+			CustomerService.exportDataFromDatabase(selectQuery, "invalid-customers");
 			long finishInvalidCust = System.currentTimeMillis();
 			long timeElapsedInvalidCust = finishInvalidCust - startInvalidCust;
 			System.out.println("The invalid customer export process took "+timeElapsedInvalidCust/1000+" seconds to execute");
